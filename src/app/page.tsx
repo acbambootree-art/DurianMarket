@@ -1,65 +1,115 @@
-import Image from "next/image";
+import { fetchLatestPrices, fetchDailyAverages, fetchMonthlyAverages } from "@/lib/data";
+import { generateAllInsights } from "@/lib/insights";
+import PriceCard from "@/components/ui/PriceCard";
+import StatCard from "@/components/ui/StatCard";
+import InsightCard from "@/components/ui/InsightCard";
+import PriceTrendChart from "@/components/charts/PriceTrendChart";
+import TickerBar from "@/components/ui/TickerBar";
+import HeroSection from "@/components/ui/HeroSection";
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function DashboardPage() {
+  const [latestPrices, dailyAverages, monthlyAverages] = await Promise.all([
+    fetchLatestPrices(),
+    fetchDailyAverages(90),
+    fetchMonthlyAverages(),
+  ]);
+
+  const insights = generateAllInsights(dailyAverages, latestPrices, monthlyAverages);
+
+  const todayAvg =
+    latestPrices.length > 0
+      ? latestPrices.reduce((s, p) => s + Number(p.price_per_kg), 0) / latestPrices.length
+      : 0;
+
+  const cheapest = latestPrices[0];
+  const mostExpensive = latestPrices[latestPrices.length - 1];
+
+  const prevDay = dailyAverages.length >= 2 ? dailyAverages[dailyAverages.length - 2] : null;
+  const dayChange = prevDay ? todayAvg - Number(prevDay.avg_price) : 0;
+  const dayChangePct = prevDay ? (dayChange / Number(prevDay.avg_price)) * 100 : 0;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Ticker Bar */}
+      <TickerBar prices={latestPrices} />
+
+      {/* Hero Section */}
+      <HeroSection
+        avgPrice={todayAvg}
+        dayChange={dayChange}
+        dayChangePct={dayChangePct}
+        sellerCount={latestPrices.length}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 py-6">
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+          <StatCard
+            label="Market Average"
+            value={`$${todayAvg.toFixed(2)}`}
+            sub={
+              dayChange !== 0
+                ? `${dayChange > 0 ? "+" : ""}$${dayChange.toFixed(2)} from yesterday`
+                : undefined
+            }
+            accent
+          />
+          <StatCard
+            label="Low"
+            value={cheapest ? `$${Number(cheapest.price_per_kg).toFixed(2)}` : "-"}
+            sub={cheapest?.seller_name}
+          />
+          <StatCard
+            label="High"
+            value={mostExpensive ? `$${Number(mostExpensive.price_per_kg).toFixed(2)}` : "-"}
+            sub={mostExpensive?.seller_name}
+          />
+          <StatCard
+            label="Sellers"
+            value={String(latestPrices.length)}
+            sub="Live tracking"
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Chart */}
+        <div className="mb-6">
+          <PriceTrendChart data={dailyAverages} compact />
         </div>
-      </main>
+
+        {/* Insights */}
+        {insights.length > 0 && (
+          <div className="mb-6">
+            <h2 className="text-sm font-mono text-text-secondary uppercase tracking-wide mb-3">
+              Market Signals
+            </h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              {insights.slice(0, 4).map((insight, i) => (
+                <InsightCard key={i} insight={insight} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Seller Prices */}
+        <div>
+          <h2 className="text-sm font-mono text-text-secondary uppercase tracking-wide mb-3">
+            All Sellers
+          </h2>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {latestPrices.map((price, i) => (
+              <PriceCard key={price.id} price={price} rank={i + 1} />
+            ))}
+          </div>
+          {latestPrices.length === 0 && (
+            <div className="bg-surface rounded-lg border border-surface-border p-8 text-center text-text-muted font-mono text-sm">
+              NO DATA AVAILABLE
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
