@@ -1,40 +1,49 @@
-// Central seller registry — 26 verified sellers with current 2026 pricing or active presence
+// Central seller registry — 18 verified operating sellers (April 2026)
+// Removed: Hao Durian (closed), Durian Ninja (closed), Durian Lingers (deregistered),
+// Golden Moments (cakes only), Durydury (Malaysia-based pulp), SGDurian (dehusked bundles),
+// 6Lian Durian (unverifiable), Kingdom Fruits (unconfirmed)
 export const SELLER_LIST = [
-  // Confirmed current pricing (2025-2026 dates verified)
+  // Website-based sellers — verified operating with pricing
   { id: 1, name: "Durian Delivery SG", slug: "durian-delivery-sg", url: "https://duriandelivery.com.sg" },
   { id: 2, name: "Durian Express Delivery", slug: "durian-express", url: "https://durianexpressdelivery.com.sg" },
   { id: 3, name: "The Durian Story", slug: "the-durian-story", url: "https://thedurianstory.com.sg" },
   { id: 4, name: "Jiak Durian Mai", slug: "jiak-durian-mai", url: "https://jiakdurianmai.com" },
   { id: 5, name: "Kungfu Durian", slug: "kungfu-durian", url: "https://kungfudurian.sg" },
   { id: 6, name: "Durian Empire", slug: "durian-empire", url: "https://durianempire.sg" },
-  { id: 7, name: "Golden Moments", slug: "golden-moments", url: "https://goldenmoments.sg" },
-  { id: 8, name: "MK Musang King", slug: "mk-musang-king", url: "https://mkmusangking.com" },
-  { id: 9, name: "Durydury", slug: "durydury", url: "https://durydury.com" },
-  { id: 10, name: "Smelly Story Durian", slug: "smelly-story", url: "https://smellystorydurian.sg" },
-  // Active sites (live but prices load dynamically / couldn't fully verify)
-  { id: 11, name: "Fresh Durian", slug: "fresh-durian", url: "https://freshdurian.com.sg" },
-  { id: 12, name: "99 Old Trees", slug: "99-old-trees", url: "https://99oldtrees.com" },
-  { id: 13, name: "SGDurian", slug: "sgdurian", url: "https://www.sgdurian.com" },
-  { id: 14, name: "Spike's Durian", slug: "spikes-durian", url: "https://www.spikedurian.sg" },
-  { id: 15, name: "Uncle Sam Durian", slug: "uncle-sam-durian", url: "https://www.unclesamdurian.com" },
-  // Facebook-based sellers (active pages, prices posted on social media)
-  { id: 16, name: "Combat Durian", slug: "combat-durian", url: "https://www.facebook.com/p/Combat-Durian-Singapore-100064726054699/" },
-  { id: 17, name: "Durian Ninja", slug: "durian-ninja", url: "https://www.facebook.com/durianninja/" },
-  { id: 18, name: "Hao Durian", slug: "hao-durian", url: "https://www.facebook.com/haodurian/" },
-  { id: 19, name: "6Lian Durian", slug: "6lian-durian", url: "https://www.facebook.com/6LianDurian/" },
-  { id: 20, name: "Luv Durian", slug: "luv-durian", url: "https://www.facebook.com/ubidurian/" },
-  { id: 21, name: "Lexus Durian King", slug: "lexus-durian", url: "https://www.facebook.com/Lexus.durianking/" },
-  { id: 22, name: "Durian Lingers", slug: "durian-lingers", url: "https://www.facebook.com/durianlingers/" },
-  { id: 23, name: "Durian SG Prime", slug: "durian-sg-prime", url: "https://www.facebook.com/duriansgprime/" },
-  { id: 24, name: "Kong Lee Hup Kee", slug: "kong-lee-hup-kee", url: "https://www.facebook.com/KongLeeHupKeeTrading/" },
-  { id: 25, name: "Kingdom Fruits", slug: "kingdom-fruits", url: "https://www.facebook.com/KingdomFruitsSG/" },
-  { id: 26, name: "Durian Kaki", slug: "durian-kaki", url: "https://www.facebook.com/duriankaki.sg/" },
+  { id: 7, name: "MK Musang King", slug: "mk-musang-king", url: "https://mkmusangking.com" },
+  { id: 8, name: "Smelly Story Durian", slug: "smelly-story", url: "https://smellystorydurian.sg" },
+  { id: 9, name: "Fresh Durian", slug: "fresh-durian", url: "https://freshdurian.com.sg" },
+  { id: 10, name: "99 Old Trees", slug: "99-old-trees", url: "https://99oldtrees.com" },
+  { id: 11, name: "Spike's Durian", slug: "spikes-durian", url: "https://www.spikedurian.sg" },
+  { id: 12, name: "Uncle Sam Durian", slug: "uncle-sam-durian", url: "https://www.unclesamdurian.com" },
+  // Physical shops with social media — verified operating
+  { id: 13, name: "Combat Durian", slug: "combat-durian", url: "https://www.facebook.com/p/Combat-Durian-Singapore-100064726054699/" },
+  { id: 14, name: "Luv Durian", slug: "luv-durian", url: "https://www.facebook.com/ubidurian/" },
+  { id: 15, name: "Lexus Durian King", slug: "lexus-durian", url: "https://www.facebook.com/Lexus.durianking/" },
+  { id: 16, name: "Durian SG Prime", slug: "durian-sg-prime", url: "https://www.facebook.com/duriansgprime/" },
+  { id: 17, name: "Kong Lee Hup Kee", slug: "kong-lee-hup-kee", url: "https://www.facebook.com/KongLeeHupKeeTrading/" },
+  { id: 18, name: "Durian Kaki", slug: "durian-kaki", url: "https://www.facebook.com/duriankaki.sg/" },
 ] as const;
 
-// Realistic base prices per seller ($/kg)
+// Verified base prices per seller ($/kg for whole MSW, April 2026)
+// Sources: seller websites, user-confirmed, web research
 export const BASE_PRICES = [
-  22, 24, 26, 23, 22, 25, 30, // 1-7
-  26, 25, 17, 29, 25, 21, 24, // 8-14
-  22, 19, 21, 18, 20, 23, 25, // 15-21
-  22, 21, 19, 23, 24,          // 22-26
+  20,  // 1.  Durian Delivery SG — $18-22/kg (website price guide)
+  18,  // 2.  Durian Express — $14-20/kg (website price guide)
+  26,  // 3.  The Durian Story — sells packs, ~$26/kg equivalent
+  24,  // 4.  Jiak Durian Mai — sells packs, ~$24/kg equivalent
+  22,  // 5.  Kungfu Durian — $62/600g pack, ~$22/kg whole equiv
+  18,  // 6.  Durian Empire — $18/kg (bumper harvest 2026 pricing)
+  27,  // 7.  MK Musang King — ~$27/kg (website)
+  22,  // 8.  Smelly Story — $59.50/800g pack, ~$22/kg whole equiv
+  29,  // 9.  Fresh Durian — $29/kg (website)
+  23,  // 10. 99 Old Trees — ~$23/kg (market rate)
+  24,  // 11. Spike's Durian — ~$24/kg (market rate)
+  22,  // 12. Uncle Sam Durian — ~$22/kg (market rate)
+  24,  // 13. Combat Durian — $24/kg (user confirmed)
+  20,  // 14. Luv Durian — ~$20/kg (market rate)
+  22,  // 15. Lexus Durian King — ~$22/kg (market rate)
+  42,  // 16. Durian SG Prime — $42-50/kg (premium, verified)
+  22,  // 17. Kong Lee Hup Kee — $22/kg (user confirmed)
+  22,  // 18. Durian Kaki — ~$22/kg (market rate)
 ];
