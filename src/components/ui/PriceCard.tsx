@@ -17,9 +17,9 @@ export default function PriceCard({ price, rank }: { price: PriceWithSeller; ran
             href={price.website_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[11px] font-mono text-neon-blue/70 hover:text-neon-blue"
+            className="text-[11px] font-mono text-neon-blue/70 hover:text-neon-blue block truncate max-w-[150px] md:max-w-[200px]"
           >
-            {price.website_url.replace("https://", "").replace("www.", "")}
+            {price.website_url.replace("https://", "").replace("www.", "").replace(/\/$/, "")}
           </a>
         </div>
         <div className="text-right">
