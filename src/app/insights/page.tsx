@@ -2,7 +2,7 @@ import { fetchLatestPrices, fetchDailyAverages, fetchMonthlyAverages } from "@/l
 import { generateAllInsights } from "@/lib/insights";
 import InsightCard from "@/components/ui/InsightCard";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 export const metadata = {
   title: "Market Signals - DurianMarket",

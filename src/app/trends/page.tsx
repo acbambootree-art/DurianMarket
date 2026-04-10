@@ -2,7 +2,7 @@ import { fetchDailyAverages, fetchPricesBySeller } from "@/lib/data";
 import PriceTrendChart from "@/components/charts/PriceTrendChart";
 import SellerPriceChart from "@/components/charts/SellerPriceChart";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 export const metadata = {
   title: "Price Trends - DurianMarket",

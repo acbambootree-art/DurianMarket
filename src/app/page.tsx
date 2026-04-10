@@ -7,7 +7,7 @@ import PriceTrendChart from "@/components/charts/PriceTrendChart";
 import TickerBar from "@/components/ui/TickerBar";
 import HeroSection from "@/components/ui/HeroSection";
 
-export const revalidate = 3600;
+export const revalidate = 300; // 5 min revalidation
 
 export default async function DashboardPage() {
   const [latestPrices, dailyAverages, monthlyAverages] = await Promise.all([
