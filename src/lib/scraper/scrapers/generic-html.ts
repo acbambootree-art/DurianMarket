@@ -1,9 +1,14 @@
 import { ScraperFn } from "../types";
-import { extractFromJsonLd, extractFromHtml, extractWithRegex, isValidPrice } from "../extract-price";
+import {
+  extractFromJsonLd,
+  extractFromHtml,
+  extractWithRegex,
+  normalizeToPerKg,
+  isValidPrice,
+} from "../extract-price";
 
-// Generic HTML scraper — tries JSON-LD, CSS selectors, then regex
 export function createGenericHtmlScraper(paths?: string[]): ScraperFn {
-  const pagePaths = paths || ["/", "/shop", "/products", "/store"];
+  const pagePaths = paths || ["/", "/shop", "/products", "/store", "/durian-price"];
 
   return async (baseUrl, signal) => {
     for (const path of pagePaths) {
@@ -20,28 +25,49 @@ export function createGenericHtmlScraper(paths?: string[]): ScraperFn {
         if (!res.ok) continue;
         const html = await res.text();
 
-        // Try JSON-LD first (most reliable)
-        const jsonLdPrice = extractFromJsonLd(html);
-        if (jsonLdPrice && isValidPrice(jsonLdPrice)) {
-          return { pricePerKg: Math.round(jsonLdPrice * 100) / 100, method: "json-ld", confidence: "high" };
+        // JSON-LD (most reliable)
+        const jsonLd = extractFromJsonLd(html);
+        if (jsonLd) {
+          const perKg = normalizeToPerKg(jsonLd.price, jsonLd.context);
+          if (isValidPrice(perKg)) {
+            return {
+              pricePerKg: Math.round(perKg * 100) / 100,
+              method: "json-ld",
+              confidence: "high",
+            };
+          }
         }
 
-        // Try CSS selector extraction
-        const htmlPrice = extractFromHtml(html);
-        if (htmlPrice && isValidPrice(htmlPrice)) {
-          return { pricePerKg: Math.round(htmlPrice * 100) / 100, method: "css-selector", confidence: "medium" };
+        // HTML element extraction
+        const htmlExtract = extractFromHtml(html);
+        if (htmlExtract) {
+          const perKg = normalizeToPerKg(htmlExtract.price, htmlExtract.context);
+          if (isValidPrice(perKg)) {
+            return {
+              pricePerKg: Math.round(perKg * 100) / 100,
+              method: "css-selector",
+              confidence: "medium",
+            };
+          }
         }
 
         // Regex fallback
-        const regexPrice = extractWithRegex(html);
-        if (regexPrice && isValidPrice(regexPrice)) {
-          return { pricePerKg: Math.round(regexPrice * 100) / 100, method: "regex", confidence: "low" };
+        const regexExtract = extractWithRegex(html);
+        if (regexExtract) {
+          const perKg = normalizeToPerKg(regexExtract.price, regexExtract.context);
+          if (isValidPrice(perKg)) {
+            return {
+              pricePerKg: Math.round(perKg * 100) / 100,
+              method: "regex",
+              confidence: "low",
+            };
+          }
         }
       } catch {
         continue;
       }
     }
 
-    throw new Error("Could not extract MSW price from any page");
+    throw new Error("Could not extract whole MSW price");
   };
 }

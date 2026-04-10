@@ -2,59 +2,44 @@ import { NextRequest, NextResponse } from "next/server";
 import { getScrapableConfigs } from "@/lib/scraper/registry";
 import { runAllScrapers } from "@/lib/scraper/run-all";
 import { ScrapeResult } from "@/lib/scraper/types";
+import { appendPriceEntries, BlobPriceEntry } from "@/lib/blob-store";
+import { SELLER_LIST } from "@/lib/seller-list";
 
-export const maxDuration = 60; // Vercel Pro: 60s max
+export const maxDuration = 60;
 
-async function savePrices(results: ScrapeResult[]) {
+async function savePrices(results: ScrapeResult[]): Promise<number> {
   const successful = results.filter((r) => r.pricePerKg !== null);
   if (successful.length === 0) return 0;
 
-  // Only save if database is configured
-  if (!process.env.DATABASE_URL) return 0;
-
-  const { upsertPrice } = await import("@/lib/prices");
-  const { getDb } = await import("@/lib/db");
-
   const today = new Date().toISOString().split("T")[0];
-  let saved = 0;
 
-  for (const result of successful) {
-    try {
-      await upsertPrice(
-        result.sellerId,
-        result.pricePerKg!,
-        today,
-        `Auto-scraped via ${result.method}`
-      );
-      saved++;
-    } catch {
-      // skip individual save errors
-    }
-  }
+  const entries: BlobPriceEntry[] = successful.map((r) => {
+    const seller = SELLER_LIST.find((s) => s.id === r.sellerId);
+    return {
+      seller_id: r.sellerId,
+      seller_name: r.sellerName,
+      seller_slug: seller?.slug || "",
+      website_url: seller?.url || "",
+      price_per_kg: r.pricePerKg!,
+      recorded_date: today,
+      method: r.method,
+      confidence: r.confidence,
+      notes: `Auto-scraped via ${r.method}`,
+    };
+  });
 
-  // Log scrape results
-  try {
-    const sql = getDb();
-    for (const result of results) {
-      await sql`
-        INSERT INTO scrape_logs (seller_id, success, price_found, method, confidence, error_message, duration_ms)
-        VALUES (${result.sellerId}, ${result.pricePerKg !== null}, ${result.pricePerKg}, ${result.method}, ${result.confidence}, ${result.error ?? null}, ${result.durationMs})
-      `;
-    }
-  } catch {
-    // scrape_logs table may not exist yet
-  }
-
-  return saved;
+  return await appendPriceEntries(entries);
 }
 
 export async function GET(request: NextRequest) {
-  // Verify cron secret for Vercel cron jobs
   const authHeader = request.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
 
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  // Allow requests without auth in dev, require auth in production
+  if (process.env.NODE_ENV === "production" && cronSecret) {
+    if (authHeader !== `Bearer ${cronSecret}`) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
   }
 
   const start = Date.now();
