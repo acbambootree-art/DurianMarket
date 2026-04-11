@@ -1,6 +1,7 @@
 // Blob-based price persistence — uses Vercel Blob storage as a simple JSON store
 // Stores a single file with all historical scraped prices
 import { put, head } from "@vercel/blob";
+import { SELLER_LIST } from "./seller-list";
 
 const BLOB_KEY = "prices/history.json";
 
@@ -73,10 +74,14 @@ export async function appendPriceEntries(newEntries: BlobPriceEntry[]): Promise<
     (e) => !keysToReplace.has(`${e.seller_id}-${e.recorded_date}`)
   );
 
+  // Self-healing: prune entries for sellers/slugs no longer in the registry
+  const validSlugs = new Set<string>(SELLER_LIST.map((s) => s.slug));
+  const pruned = filtered.filter((e) => validSlugs.has(e.seller_slug));
+
   // Add new entries
   const merged: BlobStore = {
     last_updated: new Date().toISOString(),
-    entries: [...filtered, ...newEntries].sort((a, b) =>
+    entries: [...pruned, ...newEntries].sort((a, b) =>
       a.recorded_date.localeCompare(b.recorded_date)
     ),
   };

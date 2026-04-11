@@ -1,7 +1,7 @@
-// Central seller registry — 18 verified operating sellers (April 2026)
+// Central seller registry — 17 verified operating sellers (April 2026)
 // Removed: Hao Durian (closed), Durian Ninja (closed), Durian Lingers (deregistered),
 // Golden Moments (cakes only), Durydury (Malaysia-based pulp), SGDurian (dehusked bundles),
-// 6Lian Durian (unverifiable), Kingdom Fruits (unconfirmed)
+// 6Lian Durian (unverifiable), Kingdom Fruits (unconfirmed), Spike's Durian (prices don't change)
 export const SELLER_LIST = [
   // Website-based sellers — verified operating with pricing
   { id: 1, name: "Durian Delivery SG", slug: "durian-delivery-sg", url: "https://duriandelivery.com.sg" },
@@ -14,15 +14,14 @@ export const SELLER_LIST = [
   { id: 8, name: "Smelly Story Durian", slug: "smelly-story", url: "https://smellystorydurian.sg" },
   { id: 9, name: "Fresh Durian", slug: "fresh-durian", url: "https://freshdurian.com.sg" },
   { id: 10, name: "99 Old Trees", slug: "99-old-trees", url: "https://99oldtrees.com" },
-  { id: 11, name: "Spike's Durian", slug: "spikes-durian", url: "https://www.spikedurian.sg" },
-  { id: 12, name: "Uncle Sam Durian", slug: "uncle-sam-durian", url: "https://www.unclesamdurian.com" },
+  { id: 11, name: "Uncle Sam Durian", slug: "uncle-sam-durian", url: "https://www.unclesamdurian.com" },
   // Physical shops with social media — verified operating
-  { id: 13, name: "Combat Durian", slug: "combat-durian", url: "https://www.facebook.com/p/Combat-Durian-Singapore-100064726054699/" },
-  { id: 14, name: "Luv Durian", slug: "luv-durian", url: "https://www.facebook.com/ubidurian/" },
-  { id: 15, name: "Lexus Durian King", slug: "lexus-durian", url: "https://www.facebook.com/Lexus.durianking/" },
-  { id: 16, name: "Durian SG Prime", slug: "durian-sg-prime", url: "https://www.facebook.com/duriansgprime/" },
-  { id: 17, name: "Kong Lee Hup Kee", slug: "kong-lee-hup-kee", url: "https://www.facebook.com/KongLeeHupKeeTrading/" },
-  { id: 18, name: "Durian Kaki", slug: "durian-kaki", url: "https://www.facebook.com/duriankaki.sg/" },
+  { id: 12, name: "Combat Durian", slug: "combat-durian", url: "https://www.facebook.com/p/Combat-Durian-Singapore-100064726054699/" },
+  { id: 13, name: "Luv Durian", slug: "luv-durian", url: "https://www.facebook.com/ubidurian/" },
+  { id: 14, name: "Lexus Durian King", slug: "lexus-durian", url: "https://www.facebook.com/Lexus.durianking/" },
+  { id: 15, name: "Durian SG Prime", slug: "durian-sg-prime", url: "https://www.facebook.com/duriansgprime/" },
+  { id: 16, name: "Kong Lee Hup Kee", slug: "kong-lee-hup-kee", url: "https://www.facebook.com/KongLeeHupKeeTrading/" },
+  { id: 17, name: "Durian Kaki", slug: "durian-kaki", url: "https://www.facebook.com/duriankaki.sg/" },
 ] as const;
 
 // Verified base prices per seller ($/kg for whole MSW, April 2026)
@@ -38,12 +37,11 @@ export const BASE_PRICES = [
   22,  // 8.  Smelly Story — $59.50/800g pack, ~$22/kg whole equiv
   29,  // 9.  Fresh Durian — $29/kg (website)
   23,  // 10. 99 Old Trees — ~$23/kg (market rate)
-  24,  // 11. Spike's Durian — ~$24/kg (market rate)
-  22,  // 12. Uncle Sam Durian — ~$22/kg (market rate)
-  24,  // 13. Combat Durian — $24/kg (user confirmed)
-  20,  // 14. Luv Durian — ~$20/kg (market rate)
-  22,  // 15. Lexus Durian King — ~$22/kg (market rate)
-  42,  // 16. Durian SG Prime — $42-50/kg (premium, verified)
-  22,  // 17. Kong Lee Hup Kee — $22/kg (user confirmed)
-  22,  // 18. Durian Kaki — ~$22/kg (market rate)
+  22,  // 11. Uncle Sam Durian — ~$22/kg (market rate)
+  24,  // 12. Combat Durian — $24/kg (user confirmed)
+  20,  // 13. Luv Durian — ~$20/kg (market rate)
+  22,  // 14. Lexus Durian King — ~$22/kg (market rate)
+  42,  // 15. Durian SG Prime — $42-50/kg (premium, verified)
+  22,  // 16. Kong Lee Hup Kee — $22/kg (user confirmed)
+  22,  // 17. Durian Kaki — ~$22/kg (market rate)
 ];

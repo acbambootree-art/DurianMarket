@@ -1,9 +1,16 @@
 // Unified data access layer — priority: Blob > Postgres > sample data
 import { DailyAverage, PriceWithSeller } from "./db";
 import { loadPriceHistory, BlobPriceEntry } from "./blob-store";
+import { SELLER_LIST } from "./seller-list";
 
 const hasDb = () => !!process.env.DATABASE_URL;
 const hasBlob = () => !!process.env.BLOB_READ_WRITE_TOKEN;
+
+// Only include entries for sellers that are currently in the registry
+function filterActiveSellers(entries: BlobPriceEntry[]): BlobPriceEntry[] {
+  const validSlugs = new Set<string>(SELLER_LIST.map((s) => s.slug));
+  return entries.filter((e) => validSlugs.has(e.seller_slug));
+}
 
 // Convert BlobPriceEntry to PriceWithSeller
 function blobToPrice(e: BlobPriceEntry, index: number): PriceWithSeller {
@@ -22,7 +29,7 @@ function blobToPrice(e: BlobPriceEntry, index: number): PriceWithSeller {
 
 async function fetchFromBlob(): Promise<BlobPriceEntry[]> {
   const store = await loadPriceHistory();
-  return store?.entries || [];
+  return filterActiveSellers(store?.entries || []);
 }
 
 export async function fetchLatestPrices(): Promise<PriceWithSeller[]> {
