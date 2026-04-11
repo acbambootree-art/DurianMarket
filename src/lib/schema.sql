@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS scrape_logs (
 
 CREATE INDEX IF NOT EXISTS idx_scrape_logs_date ON scrape_logs(created_at DESC);
 
--- Seed 17 verified operating sellers (April 2026)
+-- Seed 16 verified operating sellers (April 2026)
 INSERT INTO sellers (name, slug, website_url) VALUES
   ('Durian Delivery SG', 'durian-delivery-sg', 'https://duriandelivery.com.sg'),
   ('Durian Express Delivery', 'durian-express', 'https://durianexpressdelivery.com.sg'),
@@ -50,7 +50,6 @@ INSERT INTO sellers (name, slug, website_url) VALUES
   ('Combat Durian', 'combat-durian', 'https://www.facebook.com/p/Combat-Durian-Singapore-100064726054699/'),
   ('Luv Durian', 'luv-durian', 'https://www.facebook.com/ubidurian/'),
   ('Lexus Durian King', 'lexus-durian', 'https://www.facebook.com/Lexus.durianking/'),
-  ('Durian SG Prime', 'durian-sg-prime', 'https://www.facebook.com/duriansgprime/'),
   ('Kong Lee Hup Kee', 'kong-lee-hup-kee', 'https://www.facebook.com/KongLeeHupKeeTrading/'),
   ('Durian Kaki', 'durian-kaki', 'https://www.facebook.com/duriankaki.sg/')
 ON CONFLICT (slug) DO NOTHING;

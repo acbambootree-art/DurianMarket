@@ -12,8 +12,8 @@ const shopifyThenHtml = createChainScraper(shopify, html);
 const wooThenHtml = createChainScraper(woo, html);
 const allStrategies = createChainScraper(shopify, woo, html);
 
-// Facebook-only sellers (IDs 12-17) can't be scraped
-const FACEBOOK_ONLY_IDS = new Set([12, 13, 14, 15, 16, 17]);
+// Facebook-only sellers (IDs 12-16) can't be scraped
+const FACEBOOK_ONLY_IDS = new Set([12, 13, 14, 15, 16]);
 
 export function getScrapableConfigs(): SellerScrapeConfig[] {
   return SELLER_LIST
