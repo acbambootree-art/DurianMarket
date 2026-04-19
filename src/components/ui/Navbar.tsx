@@ -11,6 +11,8 @@ const links = [
   { href: "/sellers", label: "Sellers" },
 ];
 
+const WHATSAPP_URL = "https://wa.me/6589422200";
+
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -42,6 +44,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded text-sm font-medium font-mono transition-colors text-text-secondary hover:text-neon-green hover:bg-surface-light"
+            >
+              Contact Us
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -73,6 +83,15 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="px-3 py-2 rounded text-sm font-medium font-mono transition-colors text-text-secondary hover:text-neon-green hover:bg-surface-light"
+            >
+              Contact Us
+            </a>
           </div>
         )}
       </div>
