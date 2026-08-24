@@ -1,5 +1,8 @@
+import Link from "next/link";
 import { fetchLatestPrices, fetchDailyAverages, fetchMonthlyAverages } from "@/lib/data";
 import { generateAllInsights } from "@/lib/insights";
+import { fetchDurianNews } from "@/lib/news";
+import NewsCard from "@/components/ui/NewsCard";
 import PriceCard from "@/components/ui/PriceCard";
 import StatCard from "@/components/ui/StatCard";
 import InsightCard from "@/components/ui/InsightCard";
@@ -10,10 +13,11 @@ import HeroSection from "@/components/ui/HeroSection";
 export const revalidate = 300; // 5 min revalidation
 
 export default async function DashboardPage() {
-  const [latestPrices, dailyAverages, monthlyAverages] = await Promise.all([
+  const [latestPrices, dailyAverages, monthlyAverages, news] = await Promise.all([
     fetchLatestPrices(),
     fetchDailyAverages(90),
     fetchMonthlyAverages(),
+    fetchDurianNews(4),
   ]);
 
   const insights = generateAllInsights(dailyAverages, latestPrices, monthlyAverages);
@@ -88,6 +92,28 @@ export default async function DashboardPage() {
             <div className="grid gap-3 md:grid-cols-2">
               {insights.slice(0, 4).map((insight, i) => (
                 <InsightCard key={i} insight={insight} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* News */}
+        {news.length > 0 && (
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-mono text-text-secondary uppercase tracking-wide">
+                Durian Wire
+              </h2>
+              <Link
+                href="/news"
+                className="text-xs font-mono text-neon-green hover:text-neon-green-dim transition-colors"
+              >
+                ALL NEWS &rarr;
+              </Link>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {news.map((item) => (
+                <NewsCard key={item.link} item={item} />
               ))}
             </div>
           </div>
