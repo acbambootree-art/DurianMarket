@@ -7,6 +7,12 @@ export const metadata = {
   description: "Compare Musang King durian prices across Singapore sellers",
 };
 
+function getSource(method?: string, confidence?: string) {
+  if (method === "manual") return { label: "MANUAL", color: "text-neon-blue/70 border-neon-blue/30" };
+  if (confidence === "high") return { label: "AUTO · HIGH", color: "text-text-muted border-surface-border" };
+  return { label: "AUTO · MED", color: "text-neon-amber/70 border-neon-amber/30" };
+}
+
 function getSignal(pctDiff: number, isCheapest: boolean, isExpensive: boolean) {
   if (isCheapest) return { label: "BUY", color: "text-neon-green" };
   if (isExpensive) return { label: "HIGH", color: "text-neon-red" };
@@ -68,6 +74,11 @@ export default async function SellersPage() {
                               BEST
                             </span>
                           )}
+                          <span
+                            className={`text-[9px] font-mono border px-1 py-0.5 rounded shrink-0 ${getSource(price.method, price.confidence).color}`}
+                          >
+                            {getSource(price.method, price.confidence).label}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -147,6 +158,11 @@ export default async function SellersPage() {
                             BEST
                           </span>
                         )}
+                        <span
+                          className={`ml-2 text-[9px] font-mono border px-1.5 py-0.5 rounded ${getSource(price.method, price.confidence).color}`}
+                        >
+                          {getSource(price.method, price.confidence).label}
+                        </span>
                       </td>
                       <td className="px-4 py-3 text-right font-bold font-mono text-lg text-neon-green">
                         ${priceNum.toFixed(2)}

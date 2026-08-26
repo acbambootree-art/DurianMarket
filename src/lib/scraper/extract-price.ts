@@ -132,12 +132,8 @@ export function normalizeToPerKg(price: number, context: string): number | null 
     }
   }
 
-  // No explicit weight — use heuristics based on price range
-  // Typical per-kg range
-  if (price >= MIN_REASONABLE_PER_KG && price <= MAX_REASONABLE_PER_KG) return price;
-
-  // If no weight and price is outside reasonable per-kg range, we can't confidently normalize.
-  // Don't guess — return null and let caller know extraction failed.
+  // No explicit per-kg marker or weight — could be a box/pack price, so don't
+  // guess. A $37 box recorded as $37/kg poisons rankings and averages.
   return null;
 }
 

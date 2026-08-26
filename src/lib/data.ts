@@ -6,10 +6,14 @@ import { SELLER_LIST } from "./seller-list";
 const hasDb = () => !!process.env.DATABASE_URL;
 const hasBlob = () => !!process.env.BLOB_READ_WRITE_TOKEN;
 
-// Only include entries for sellers that are currently in the registry
+// Only include entries for sellers that are currently in the registry,
+// and drop low-confidence scrapes (regex matches) — they stay in the Blob
+// for audit but never feed rankings, averages, trends, or insights.
 function filterActiveSellers(entries: BlobPriceEntry[]): BlobPriceEntry[] {
   const validSlugs = new Set<string>(SELLER_LIST.map((s) => s.slug));
-  return entries.filter((e) => validSlugs.has(e.seller_slug));
+  return entries.filter(
+    (e) => validSlugs.has(e.seller_slug) && e.confidence !== "low",
+  );
 }
 
 // Convert BlobPriceEntry to PriceWithSeller
@@ -24,6 +28,8 @@ function blobToPrice(e: BlobPriceEntry, index: number): PriceWithSeller {
     seller_name: e.seller_name,
     seller_slug: e.seller_slug,
     website_url: e.website_url,
+    method: e.method,
+    confidence: e.confidence,
   };
 }
 

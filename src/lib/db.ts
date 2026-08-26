@@ -30,6 +30,8 @@ export type PriceWithSeller = PriceEntry & {
   seller_name: string;
   seller_slug: string;
   website_url: string;
+  method?: string; // "shopify-json" | "json-ld" | "css-selector" | "regex" | "manual"
+  confidence?: string; // "high" | "medium" | "low"
 };
 
 export type DailyAverage = {
