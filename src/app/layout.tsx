@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://durianmarket.vercel.app"),
   title: "DurianMarket - Musang King Price Tracker",
   description:
     "Track daily Musang King durian prices across Singapore sellers. Find the best deals, see price trends, and know when to buy.",

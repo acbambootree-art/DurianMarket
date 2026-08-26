@@ -10,6 +10,7 @@ const links = [
   { href: "/insights", label: "Insights" },
   { href: "/news", label: "News" },
   { href: "/sellers", label: "Sellers" },
+  { href: "/directory", label: "Directory" },
 ];
 
 const WHATSAPP_URL = "https://wa.me/6589422200";
