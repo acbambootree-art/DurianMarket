@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getAreas } from "@/lib/directory";
+import { getArticles } from "@/lib/articles";
 
 const BASE = "https://durianmarket.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/trends", "/insights", "/news", "/sellers", "/directory"].map(
+  const staticPages = ["", "/trends", "/insights", "/news", "/sellers", "/directory", "/guides"].map(
     (path) => ({
       url: `${BASE}${path}`,
       changeFrequency: "daily" as const,
@@ -16,5 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
-  return [...staticPages, ...areaPages];
+  const guidePages = getArticles().map((a) => ({
+    url: `${BASE}/guides/${a.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+  return [...staticPages, ...areaPages, ...guidePages];
 }

@@ -56,3 +56,20 @@ body {
 .animate-ticker {
   animation: ticker-scroll 30s linear infinite;
 }
+
+/* Article prose */
+.article-prose { color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.7; }
+.article-prose h2 { color: var(--color-text-primary); font-family: var(--font-mono); font-weight: 700; font-size: 1.15rem; margin: 2rem 0 0.75rem; }
+.article-prose h3 { color: var(--color-text-primary); font-weight: 600; font-size: 1rem; margin: 1.5rem 0 0.5rem; }
+.article-prose p { margin: 0.75rem 0; }
+.article-prose a { color: var(--color-neon-blue); }
+.article-prose a:hover { text-decoration: underline; }
+.article-prose strong { color: var(--color-text-primary); }
+.article-prose ul, .article-prose ol { margin: 0.75rem 0; padding-left: 1.5rem; }
+.article-prose ul { list-style: disc; }
+.article-prose ol { list-style: decimal; }
+.article-prose li { margin: 0.35rem 0; }
+.article-prose table { width: 100%; margin: 1rem 0; border-collapse: collapse; font-size: 0.85rem; }
+.article-prose th, .article-prose td { border: 1px solid var(--color-surface-border); padding: 0.5rem 0.75rem; text-align: left; }
+.article-prose th { background: var(--color-surface); color: var(--color-text-primary); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; }
+.article-prose blockquote { border-left: 2px solid var(--color-neon-green); padding-left: 1rem; margin: 1rem 0; color: var(--color-text-muted); }
