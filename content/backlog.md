@@ -13,7 +13,7 @@ Writing rules for every article:
 
 ## Varieties
 - [x] 2026-08-27 musang-king-vs-d24 — Musang King vs D24: Which Durian Should You Buy? (musang king vs d24)
-- [ ] black-gold-durian-guide — Black Gold Durian: What It Is and Why It Costs More (black gold durian)
+- [x] 2026-08-27 black-gold-durian-guide — Black Gold Durian: What It Is and Why It Costs More (black gold durian)
 - [ ] black-thorn-vs-musang-king — Black Thorn (Ochee) vs Musang King (black thorn durian singapore)
 - [ ] red-prawn-durian-guide — Red Prawn (Ang Heh) Durian Guide (red prawn durian)
 - [ ] golden-phoenix-durian-guide — Golden Phoenix (Jin Feng) Durian Guide (golden phoenix durian)
