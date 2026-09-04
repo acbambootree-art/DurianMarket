@@ -21,7 +21,7 @@ Writing rules for every article:
 - [x] 2026-09-01 d101-durian-guide — D101 Durian: Sweet, Mild, Beginner-Friendly (d101 durian)
 - [x] 2026-09-02 tekka-durian-guide — Tekka (Green Bamboo) Durian Guide (tekka durian)
 - [x] 2026-09-03 xo-durian-guide — XO Durian: The Bitter, Boozy One (xo durian)
-- [ ] durian-varieties-singapore — Every Durian Variety Sold in Singapore, Compared (durian varieties singapore)
+- [x] 2026-09-04 durian-varieties-singapore — Every Durian Variety Sold in Singapore, Compared (durian varieties singapore)
 
 ## Buying smart
 - [ ] how-to-choose-a-durian — How to Pick a Good Durian: What Sellers Look For (how to choose durian)
