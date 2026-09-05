@@ -24,7 +24,7 @@ Writing rules for every article:
 - [x] 2026-09-04 durian-varieties-singapore — Every Durian Variety Sold in Singapore, Compared (durian varieties singapore)
 
 ## Buying smart
-- [ ] how-to-choose-a-durian — How to Pick a Good Durian: What Sellers Look For (how to choose durian)
+- [x] 2026-09-05 how-to-choose-a-durian — How to Pick a Good Durian: What Sellers Look For (how to choose durian)
 - [ ] how-to-spot-fake-musang-king — How to Spot Fake Musang King (fake musang king)
 - [ ] musang-king-price-guide — Musang King Price Guide: What You Should Pay Per KG (musang king price singapore)
 - [ ] durian-season-singapore — When Is Durian Season in Singapore? (durian season singapore)
