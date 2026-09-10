@@ -29,7 +29,7 @@ Writing rules for every article:
 - [x] 2026-09-07 musang-king-price-guide — Musang King Price Guide: What You Should Pay Per KG (musang king price singapore)
 - [x] 2026-09-08 durian-season-singapore — When Is Durian Season in Singapore? (durian season singapore)
 - [x] 2026-09-09 why-durian-prices-change — Why Durian Prices Change Every Day (durian price fluctuation)
-- [ ] durian-scams-singapore — Common Durian Stall Tricks and How to Avoid Them (durian scam)
+- [x] 2026-09-10 durian-scams-singapore — Common Durian Stall Tricks and How to Avoid Them (durian scam)
 - [ ] stall-vs-delivery — Buying at a Stall vs Durian Delivery: Pros and Cons (durian delivery vs stall)
 - [ ] dry-vs-wet-durian — Dry vs Wet Durian: What the Texture Means (wet durian meaning)
 - [ ] how-much-durian-per-person — How Many KG of Durian Per Person? (durian portion guide)
