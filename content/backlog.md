@@ -32,7 +32,7 @@ Writing rules for every article:
 - [x] 2026-09-10 durian-scams-singapore — Common Durian Stall Tricks and How to Avoid Them (durian scam)
 - [x] 2026-09-11 stall-vs-delivery — Buying at a Stall vs Durian Delivery: Pros and Cons (durian delivery vs stall)
 - [x] 2026-09-12 dry-vs-wet-durian — Dry vs Wet Durian: What the Texture Means (wet durian meaning)
-- [ ] how-much-durian-per-person — How Many KG of Durian Per Person? (durian portion guide)
+- [x] 2026-09-13 how-much-durian-per-person — How Many KG of Durian Per Person? (durian portion guide)
 - [ ] old-tree-musang-king — Old Tree Musang King: Real Difference or Marketing? (old tree musang king)
 - [ ] msw-grades-explained — Musang King Grades Explained: A/B/C, Premium vs Regular (musang king grade)
 
