@@ -34,7 +34,7 @@ Writing rules for every article:
 - [x] 2026-09-12 dry-vs-wet-durian — Dry vs Wet Durian: What the Texture Means (wet durian meaning)
 - [x] 2026-09-13 how-much-durian-per-person — How Many KG of Durian Per Person? (durian portion guide)
 - [x] 2026-09-14 old-tree-musang-king — Old Tree Musang King: Real Difference or Marketing? (old tree musang king)
-- [ ] msw-grades-explained — Musang King Grades Explained: A/B/C, Premium vs Regular (musang king grade)
+- [x] 2026-09-15 msw-grades-explained — Musang King Grades Explained: A/B/C, Premium vs Regular (musang king grade)
 
 ## Practical
 - [ ] best-durian-delivery-singapore — How to Choose a Durian Delivery Service (durian delivery singapore)
