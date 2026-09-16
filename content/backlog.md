@@ -37,7 +37,7 @@ Writing rules for every article:
 - [x] 2026-09-15 msw-grades-explained — Musang King Grades Explained: A/B/C, Premium vs Regular (musang king grade)
 
 ## Practical
-- [ ] best-durian-delivery-singapore — How to Choose a Durian Delivery Service (durian delivery singapore)
+- [x] 2026-09-16 best-durian-delivery-singapore — How to Choose a Durian Delivery Service (durian delivery singapore)
 - [ ] how-to-store-durian — How to Store Leftover Durian (store durian)
 - [ ] can-you-freeze-durian — Can You Freeze Durian? Yes — Here's How (freeze durian)
 - [ ] remove-durian-smell — How to Get Rid of Durian Smell: Hands, Car, Fridge (remove durian smell)
