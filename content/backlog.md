@@ -38,7 +38,7 @@ Writing rules for every article:
 
 ## Practical
 - [x] 2026-09-16 best-durian-delivery-singapore — How to Choose a Durian Delivery Service (durian delivery singapore)
-- [ ] how-to-store-durian — How to Store Leftover Durian (store durian)
+- [x] 2026-09-17 how-to-store-durian — How to Store Leftover Durian (store durian)
 - [ ] can-you-freeze-durian — Can You Freeze Durian? Yes — Here's How (freeze durian)
 - [ ] remove-durian-smell — How to Get Rid of Durian Smell: Hands, Car, Fridge (remove durian smell)
 - [ ] durian-on-mrt-grab-plane — Can You Bring Durian on the MRT, Grab, or a Plane? (durian mrt rules)
