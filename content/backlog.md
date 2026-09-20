@@ -41,7 +41,7 @@ Writing rules for every article:
 - [x] 2026-09-17 how-to-store-durian — How to Store Leftover Durian (store durian)
 - [x] 2026-09-18 can-you-freeze-durian — Can You Freeze Durian? Yes — Here's How (freeze durian)
 - [x] 2026-09-19 remove-durian-smell — How to Get Rid of Durian Smell: Hands, Car, Fridge (remove durian smell)
-- [ ] durian-on-mrt-grab-plane — Can You Bring Durian on the MRT, Grab, or a Plane? (durian mrt rules)
+- [x] 2026-09-20 durian-on-mrt-grab-plane — Can You Bring Durian on the MRT, Grab, or a Plane? (durian mrt rules)
 - [ ] durian-and-alcohol — Durian and Alcohol: Myth or Real Danger? (durian and alcohol)
 - [ ] durian-nutrition — Durian Nutrition: Calories, Sugar, and What's Actually In It (durian calories)
 - [ ] durian-pregnancy — Is Durian Safe During Pregnancy? (durian pregnancy)
