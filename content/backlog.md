@@ -46,7 +46,7 @@ Writing rules for every article:
 - [x] 2026-09-22 durian-nutrition — Durian Nutrition: Calories, Sugar, and What's Actually In It (durian calories)
 - [x] 2026-09-23 durian-pregnancy — Is Durian Safe During Pregnancy? (durian pregnancy)
 - [x] 2026-09-24 durian-diabetes — Durian and Diabetes: What to Know Before Eating (durian diabetic)
-- [ ] how-to-open-durian — How to Open a Durian at Home Without Hurting Yourself (how to open durian)
+- [x] 2026-09-25 how-to-open-durian — How to Open a Durian at Home Without Hurting Yourself (how to open durian)
 
 ## Season & price
 - [ ] durian-season-calendar — Durian Season Calendar: Malaysian Harvests and SG Prices (durian season calendar)
