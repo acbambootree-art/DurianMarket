@@ -52,7 +52,7 @@ Writing rules for every article:
 - [x] 2026-09-26 durian-season-calendar — Durian Season Calendar: Malaysian Harvests and SG Prices (durian season calendar)
 - [x] 2026-09-27 why-musang-king-expensive — Why Is Musang King So Expensive? (why is musang king expensive)
 - [x] 2026-09-28 cheapest-time-to-buy-durian — The Cheapest Time of Year to Buy Durian (cheap durian singapore)
-- [ ] pahang-vs-johor-musang-king — Pahang vs Johor Musang King: Does Origin Matter? (pahang musang king)
+- [x] 2026-09-30 pahang-vs-johor-musang-king — Pahang vs Johor Musang King: Does Origin Matter? (pahang musang king)
 - [ ] durian-buffet-worth-it — Durian Buffets in Singapore: Worth It or a Trap? (durian buffet singapore)
 - [ ] frozen-vs-fresh-durian — Frozen Durian Pulp vs Fresh: Honest Comparison (frozen durian)
 
