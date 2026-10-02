@@ -54,7 +54,7 @@ Writing rules for every article:
 - [x] 2026-09-28 cheapest-time-to-buy-durian — The Cheapest Time of Year to Buy Durian (cheap durian singapore)
 - [x] 2026-09-30 pahang-vs-johor-musang-king — Pahang vs Johor Musang King: Does Origin Matter? (pahang musang king)
 - [x] 2026-10-01 durian-buffet-worth-it — Durian Buffets in Singapore: Worth It or a Trap? (durian buffet singapore)
-- [ ] frozen-vs-fresh-durian — Frozen Durian Pulp vs Fresh: Honest Comparison (frozen durian)
+- [x] 2026-10-02 frozen-vs-fresh-durian — Frozen Durian Pulp vs Fresh: Honest Comparison (frozen durian)
 
 ## Local
 - [ ] geylang-vs-dempsey-durian — Geylang vs Dempsey: Where Durian Is Cheaper (and Why) (geylang durian)
