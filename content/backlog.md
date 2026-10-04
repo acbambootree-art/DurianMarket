@@ -58,5 +58,5 @@ Writing rules for every article:
 
 ## Local
 - [x] 2026-10-03 geylang-vs-dempsey-durian — Geylang vs Dempsey: Where Durian Is Cheaper (and Why) (geylang durian)
-- [ ] durian-culture-singapore — Why Singapore Is Obsessed With Durian (durian culture singapore)
+- [x] 2026-10-04 durian-culture-singapore — Why Singapore Is Obsessed With Durian (durian culture singapore)
 - [ ] durian-desserts-singapore — Durian Desserts Worth Eating in Singapore (durian dessert singapore)
